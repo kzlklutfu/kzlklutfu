@@ -11,6 +11,8 @@ int b2=11;
 int b1d;
 int b2d;
 int i;
+int y;
+int x;
 void setup(){
   pinMode(led1,OUTPUT);
   pinMode(led2,OUTPUT);
@@ -24,23 +26,27 @@ void loop(){
   b1d=digitalRead(b1);
   b2d=digitalRead(b2);
   if (b1d==HIGH && b2d==LOW){
-    for (i=3; i<8; i++){
+   for(y=1; y<5; y++){
+     for (i=3; i<8; i++){
       digitalWrite(i,HIGH);
-      delay(500);
-    }
-    for (i=7; i>2; i--){
+      delay(100);
+     }
+     for (i=7; i>2; i--){
       digitalWrite(i,LOW);
-      delay(500);
-    }
+      delay(100);
+     }
+    } 
   }
   else if (b1d==LOW && b2d==HIGH){
-    for (i=3; i<8; i++){
-      digitalWrite(i,HIGH);
-      delay(500);
-    }
-    for (i=3; i<8; i++){
-      digitalWrite(i,LOW);
-      delay(500);
-    }
+    for(x=1; x<7; x++){
+      for (i=3; i<8; i++){
+       digitalWrite(i,HIGH);
+       delay(100);
+      }
+      for (i=3; i<8; i++){
+       digitalWrite(i,LOW);
+       delay(100);
+      }
+    }      
   }
 }
