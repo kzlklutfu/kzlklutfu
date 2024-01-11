@@ -1,0 +1,65 @@
+<!---
+5 LEDs of different shapes
+--->
+  int pot=A0;
+  int led1=5;
+  int led2=6;
+  int led3=7;
+  int led4=8;
+  int led5=9;
+  int ptd;
+  int i;
+
+  void setup() {
+    pinMode(pot,INPUT);
+    pinMode(led1,OUTPUT);
+    pinMode(led2,OUTPUT);
+    pinMode(led3,OUTPUT);
+    pinMode(led4,OUTPUT);
+    pinMode(led5,OUTPUT);
+    Serial.begin(9600);
+  }
+
+  void loop() {
+    ptd=analogRead(pot);
+    Serial.print("Pot durum: ");
+    Serial.println(ptd);
+    if (ptd>0 && ptd<200){
+      for (i=5; i<10; i++){
+        digitalWrite(i,HIGH);
+        }
+        delay(100);
+      for (i=5; i<10; i++){
+        digitalWrite(i,LOW);
+        }
+        delay(100);
+    }
+    else if (ptd>201 && ptd<400){
+      for (i=5; i<10; i++){
+        digitalWrite(i,HIGH);
+        delay(100);
+        digitalWrite(i,LOW);
+        delay(100);
+      }
+    }
+    else if (ptd>401 && ptd<700){
+      for (i=5; i<10; i++){
+        digitalWrite(i,HIGH);
+        delay(100);
+      }
+      for (i=9; i>4; i--){
+        digitalWrite(i,LOW); 
+        delay(100);
+      }    
+    }
+    else if (ptd>701 && ptd<900){
+      for (i=5; i<10; i++){
+        digitalWrite(i,HIGH);
+      }
+    } 
+    else if (ptd>901 && ptd<1023){
+      for (i=5; i<10; i++){
+        digitalWrite(i,LOW);
+      }
+    }   
+  }
